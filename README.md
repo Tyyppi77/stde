@@ -21,3 +21,7 @@ int main()
 	}
 }
 ```
+
+## constexpr_math.h
+
+The stde implementation needs a constexpr version of `std::abs`, which is implemented in constexpr_math.h as `stde::abs`.
