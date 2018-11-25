@@ -19,13 +19,19 @@ int main()
 	}
 
 	int result = 0;
-	stde::loop_guard::once guard;
+	stde::loop_guard::once<> guard;
 	for (int i = 2; i < 5; i++) {
 		if (guard) {
 			result += i;
 		}
 	}
-	std::cout << result;  // Outputs 2.
 
-	return t.value;
+	bool skipped = false;
+	stde::loop_guard::skip_first<> skip{ skipped };
+	for (int i = 5; i < 8; i++) {
+		if (skip) {
+			result += i;
+		}
+	}
+	std::cout << result;  // Outputs 15.
 }

@@ -36,11 +36,26 @@ stde::loop_guard::once can be either initialized with an existing state-holding 
 
 ```cpp
 int result = 0;
-stde::loop_guard::once guard;
+stde::loop_guard::once<> guard;
 for (int i = 2; i < 5; i++) {
 	if (guard) {
 		result += i;
 	}
 }
 std::cout << result;  // Outputs 2.
+```
+
+### stde::loop_guard::skip_first
+
+stde::loop_guard::skip_first behaves just like stde::loop_guard::once, but instead of only executing the first iteration, it skips the first iteration but executes all the rest. It can also be default constructed, or initialized with a state-holding boolean.
+
+```cpp
+int result = 0;
+stde::loop_guard::skip_first<> guard;
+for (int i = 2; i < 5; i++) {
+	if (guard) {
+		result += i;
+	}
+}
+std::cout << result;  // Outputs 7.
 ```
