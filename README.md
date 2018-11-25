@@ -2,6 +2,12 @@
 
 stde (Standard Library Extensions) is a C++17 headers only library containing various utilities that I've found useful.
 
+Currently contains:
+
+- [stde::enum_container](#stdeenum_container)
+- [stde::loop_guard::once](#stdeloop_guardonce)
+- [stde::loop_guard::skip_first](#stdeloop_guardskip_first)
+
 ## stde::enum_container
 
 std::enum_container is a compile-time evaluated container that allows iteration over a continuous enumeration. The usage is super simple, create a helper alias for the type, and iterate over it using a range-based for loop:
