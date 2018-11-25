@@ -12,6 +12,13 @@ enum class Colors {
 using AllColors = stde::enum_container<Colors, Colors::White, Colors::Black>;
 static_assert(AllColors{}.size() == 5);
 
+using channel = stde::strong_typedef<int, struct channel_tag>;
+
+void foo(channel c) {
+	std::cout << *c;
+}
+
+
 int main()
 {
 	for (auto color : AllColors{}) {
@@ -34,4 +41,7 @@ int main()
 		}
 	}
 	std::cout << result;  // Outputs 15.
+
+	foo(12);
+	foo(channel{ 12 });
 }

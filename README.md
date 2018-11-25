@@ -7,6 +7,7 @@ Currently contains:
 - [stde::enum_container](#stdeenum_container)
 - [stde::loop_guard::once](#stdeloop_guardonce)
 - [stde::loop_guard::skip_first](#stdeloop_guardskip_first)
+- [stde::strong_typedef](#stdestrong_typedef)
 
 ## stde::enum_container
 
@@ -64,4 +65,21 @@ for (int i = 2; i < 5; i++) {
 	}
 }
 std::cout << result;  // Outputs 7.
+```
+
+## stde::strong_typedef
+
+stde::strong_typedef is a simple wrapper class for trivial types that can be used to provide a typesafe alternative to traditional using-statements.
+
+```cpp
+using channel = stde::strong_typedef<int, struct channel_tag>;
+
+void foo(channel c) {
+	std::cout << *c;
+}
+
+int main() {
+	foo(12);  // Compile time error.
+	foo(channel{ 12 });  // Ok.
+}
 ```
