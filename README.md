@@ -25,3 +25,22 @@ int main()
 ## constexpr_math.h
 
 The stde implementation needs a constexpr version of `std::abs`, which is implemented in constexpr_math.h as `stde::abs`.
+
+## stde::loop_guard
+
+stde::loop_guard provides a variety of helper objects that constrain the execution of code inside loops.
+
+### stde::loop_guard::once
+
+stde::loop_guard::once can be either initialized with an existing state-holding boolean variable, or initialized outside of the loop to prevent code inside a loop executing more than once. The real application is inside objects for code that might get called from the public interface more than once, but should be executed only once.
+
+```cpp
+int result = 0;
+stde::loop_guard::once guard;
+for (int i = 2; i < 5; i++) {
+	if (guard) {
+		result += i;
+	}
+}
+std::cout << result;  // Outputs 2.
+```

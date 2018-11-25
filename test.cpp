@@ -17,11 +17,15 @@ int main()
 	for (auto color : AllColors{}) {
 		std::cout << static_cast<int>(color) << ", ";
 	}
-	std::cout << "\n";
-	for (auto it = AllColors{}.rbegin(); it != AllColors{}.rend(); ++it) {
-		std::cout << static_cast<int>(*it) << ", ";
-	}
 
-	int i;
-	std::cin >> i;
+	int result = 0;
+	stde::loop_guard::once guard;
+	for (int i = 2; i < 5; i++) {
+		if (guard) {
+			result += i;
+		}
+	}
+	std::cout << result;  // Outputs 2.
+
+	return t.value;
 }
