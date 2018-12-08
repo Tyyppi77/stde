@@ -4,3 +4,4 @@
 #include "constexpr_math.h"
 #include "loop_guard.h"
 #include "strong_typedef.h"
+#include "additional_type_traits.h"
